@@ -9,7 +9,10 @@
   },
   "dependencies": {
     "core-js": "^3.4.4",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "devextreme": "19.2-stable",
+    "devextreme-themebuilder": "19.2-stable",
+    "devextreme-vue": "19.2-stable"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",
