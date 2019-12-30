@@ -1,80 +1,51 @@
 <template>
-<div>
-<dx-data-grid 
-:visible="show"
-:data-source="dataSource"
-:show-borders="true"
-allow-column-resizing="true"
-:remote-operations="true"
-@option-changed="clickShow"
->
-    <DxColumn
-      data-field="CompanyName"
-      :width.sync="width[0]"
-    />
-    <DxColumn
-      data-field="City"
-      :width.sync="width[1]"
-    />
-    <DxColumn
-      data-field="State"
-      :width.sync="width[2]"
-    />
-    <DxColumn
-      data-field="Phone"
-      :width.sync="width[3]"
-    />
-    <DxColumn
-      data-field="Fax"
-      :width.sync="width[4]"
-    />
-</dx-data-grid>
-<dx-button
-text="删除一行"
-@click="deleteRow"
-/>
-<dx-button
-text="查看宽度"
-@click="deleteColumn"
-/>
-<dx-button
-text="显示grid"
-@click="clickShow"
-/>
-</div>
+  <div>
+    <header>
+
+
+    <DxToolbar>
+      <DxItem
+        location="before"
+      />
+      <template #item="{ data: item }">
+        <LogoImg></LogoImg>
+      </template>
+    </DxToolbar>
+        </header>
+    </div>
 </template>
 
 <script>
-import { DxDataGrid, DxColumn} from "devextreme-vue/data-grid";
-import {customers} from '../data/data.js';
-import DxButton from 'devextreme-vue/button';
+import DxToolbar, { DxItem } from 'devextreme-vue/toolbar';
+import LogoImg from './LogoImg.vue'
+
 import notify from 'devextreme/ui/notify';
+import 'devextreme/ui/select_box';
+
 export default {
-    name:'Index',
-    components:{
-    DxDataGrid,
-    DxColumn,
-    DxButton
-    },
+  components: {
+    LogoImg,
+    DxToolbar,
+    DxItem
+  },
     data(){
         return{
-            width:["20%","20%","20%","20%","20%"],
-            show:true,
-            dataSource:customers,
-            columns:["CompanyName","City","State","Phone","Fax"]
-
+          logoButtonOption:{
+            icon: '../../assets/logo.png',
+            onClick: () => {
+              notify('Back button has been clicked!');
+            }
+          }
         }
     },
     methods:{
-        deleteRow(){
-            this.dataSource.splice(0,1);
-        },
-        deleteColumn(){
-            notify(this.width.join(","))
-        },
-        clickShow(){
-            this.show=!this.show;
-        }
+
     }
 }
 </script>
+
+<style scoped>
+  header {
+    background: blueviolet;
+  }
+</style>
